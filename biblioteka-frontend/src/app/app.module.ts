@@ -25,6 +25,8 @@ import {BooksButtonComponent} from './components/admin/books/books-buttons/books
 import { ApprovalsComponent} from './components/admin/approvals/approvals.component';
 import { ApprovalsGridComponent} from './components/admin/approvals/approvals-grid/approvals-grid.component';
 import { ApprovalsButtonComponent} from './components/admin/approvals/approvals-buttons/approvals-buttons.component'
+import { AddBookComponent } from './components/admin/add-book/add-book.component';
+import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ApprovalsButtonComponent} from './components/admin/approvals/approvals-
     BooksGridComponent,
     ApprovalsButtonComponent,
     ApprovalsComponent,
-    ApprovalsGridComponent
+    ApprovalsGridComponent,
+    AddBookComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
