@@ -19,6 +19,12 @@ import { TabRoutingModule} from './components/admin/router-tab/tab-routing.modul
 import {EmployeesComponent} from './components/admin/employees/employees.component';
 import {EmployeesGridComponent} from './components/admin/employees/employees-grid/employees-grid.component';
 import {EmployeesButtonComponent} from './components/admin/employees/employees-buttons/employees-buttons.component'
+import {BooksComponent} from './components/admin/books/books.component';
+import {BooksGridComponent} from './components/admin/books/books-grid/books-grid.component'
+import {BooksButtonComponent} from './components/admin/books/books-buttons/books-buttons.component';
+import { ApprovalsComponent} from './components/admin/approvals/approvals.component';
+import { ApprovalsGridComponent} from './components/admin/approvals/approvals-grid/approvals-grid.component';
+import { ApprovalsButtonComponent} from './components/admin/approvals/approvals-buttons/approvals-buttons.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +42,13 @@ import {EmployeesButtonComponent} from './components/admin/employees/employees-b
     AdminComponent,
     EmployeesComponent,
     EmployeesGridComponent, 
-    EmployeesButtonComponent
+    EmployeesButtonComponent,
+    BooksComponent,
+    BooksButtonComponent,
+    BooksGridComponent,
+    ApprovalsButtonComponent,
+    ApprovalsComponent,
+    ApprovalsGridComponent
   ],
   imports: [
     BrowserModule,
