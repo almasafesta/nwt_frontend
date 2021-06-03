@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'employees',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+  @Input() id:any;
+  selectedId:any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  childToParent(selectedID:any){
+    this.selectedId=selectedID;
+    }
 
 }

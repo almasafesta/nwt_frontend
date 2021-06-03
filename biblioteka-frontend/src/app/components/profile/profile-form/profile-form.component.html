@@ -1,4 +1,4 @@
-<form class="forma-biblioteka">
+<form class="forma-biblioteka" lass="form-control" name="add-employee" (ngSubmit)="edit()">
     <div class="row">
         <div class="col">
           <label >First name</label>
@@ -10,10 +10,10 @@
     </div>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="First name">
+            <input type="text" class="form-control" placeholder="First name" name="firstName" [(ngModel)]="firstName">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Last name">
+            <input type="text" class="form-control" placeholder="Last name" name="lastName" [(ngModel)]="lastName">
         </div>
         <label > </label>
     </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password">
         </div>
         <div class="col">
             <input type="password" class="form-control" placeholder="Password">
@@ -42,20 +42,21 @@
         <div class="col">
             <label >Confirm email:</label>
         </div>   
-        <div class="col">
-            <label > </label>
-        </div>
+        
                
     </div>
     <div class="row">
         <div class="col" >
-            <input type="email" class="form-control" placeholder="Email@email.com">
+            <input type="email" class="form-control" placeholder="Email@email.com" name="email" [(ngModel)]="email">
         </div>
         <div class="col">
             <input type="email" class="form-control" placeholder="Email@email.com">
         </div>
+              
+    </div><br>
+    <div class="row">
         <div class="col">
             <button type="submit" class="btn btn-primary">Edit</button>
-        </div>        
-    </div>
+        </div> 
+    </div> 
   </form>

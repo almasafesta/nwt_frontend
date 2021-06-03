@@ -1,0 +1,6 @@
+.ag-row-selected {
+    /* putting in !important so it overrides the theme's styling as it hovers the row also */
+    background-color: #dfdfff !important;
+  }
+  
+  

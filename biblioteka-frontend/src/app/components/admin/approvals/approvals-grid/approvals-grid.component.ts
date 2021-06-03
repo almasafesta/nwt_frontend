@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { RestApiService } from 'src/app/components/shared/rest-api.service';
 
 @Component({
   selector: 'approvals-grid',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./approvals-grid.component.css']
 })
 export class ApprovalsGridComponent implements OnInit {
-
-  constructor() { }
+  selectedId:any;
+  constructor(private api:RestApiService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +25,29 @@ columnDefs = [
     { headerName:"Book author", field:"bookAuthor", flex: 1.5},
     { headerName:"Status", field:"status", flex: 1.5}
   ]
-
+  defaultColDef = { 
+    resizable: true,
+    cellStyle: {color: '#1a3469'}
+ }
+  onRowClicked(event: any) {
+    event.node.gridOptionsWrapper.highlighted="true";
+    console.log(event); 
+    this.selectedId=event.data.bookId;
+    console.log('row', this.selectedId); 
+  }
+  rowSelection = 'multiple';
+  approve(){
+    this.api.post('/', this.selectedId).subscribe(response=>{
+      if (response && response.payload) {
+        this.toastr.success('deleted!');
+      }
+    })
+  }
+  deny(){
+    this.api.post('/', this.selectedId).subscribe(response=>{
+      if (response && response.payload) {
+        this.toastr.success('deleted!');
+      }
+    })
+  }
 }

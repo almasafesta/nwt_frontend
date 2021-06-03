@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddBookComponent } from './components/admin/add-book/add-book.component';
-import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
+import { AddBookComponent } from './components/admin/books/add-book/add-book.component';
+import { AddEmployeeComponent } from './components/admin/employees/add-employee/add-employee.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { BookstoreComponent } from './components/bookstore/bookstore.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ReviewComponent } from './components/profile/review/review.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'profile', component:ProfileComponent},
   {path:'admin', component:AdminComponent},
   {path: 'add-book', component:AddBookComponent},
-  {path: 'add-employee', component:AddEmployeeComponent}
+  {path: 'add-employee', component:AddEmployeeComponent},
+  {path: 'review', component:ReviewComponent}
 ];
 
 

@@ -1,16 +1,16 @@
-<form class="form-control">
+<form class="form-control" name="add-employee" (ngSubmit)="add()">
 
         <div class="col-sm-3">
           <label for="bookTitle" class="form-label">Book title:</label>
-          <input type="text" class="form-control" id="bookTitle">
+          <input type="text" class="form-control" id="bookTitle" name="bookTitle" [(ngModel)]="bookTitle">
         </div>
         <div class="col-sm-3">
           <label for="author" class="form-label">Author:</label>
-          <input type="text" class="form-control" id="author">
+          <input type="text" class="form-control" id="author" name="author" [(ngModel)]="author">
         </div>
         <div class="col-sm-3">
             <label for="category" class="form-label">Category:</label>
-            <select class="form-select" id="specificSizeSelect">
+            <select class="form-select" id="specificSizeSelect" name="category" [(ngModel)]="category"> 
               <option selected>Choose...</option>
               <option value="1">Fantasy</option>
               <option value="2">Romance</option>
@@ -20,15 +20,15 @@
           
         <div class="col-md-6">
           <label for="publisher" class="form-label">Publisher:</label>
-          <input type="text" class="form-control" id="publisher">
+          <input type="text" class="form-control" id="publisher" name="publisher" [(ngModel)]="publisher">
         </div>
         <div class="col-sm-3">
             <label for="category" class="form-label">Status:</label>
-            <select class="form-select" id="specificSizeSelect">
+            <select class="form-select" id="specificSizeSelect" name="status" [(ngModel)]="status">
               <option selected>Choose...</option>
               <option value="1">Available</option>
               <option value="3">Unavailable</option>
             </select>
-          </div>
-    <button type="add" class="btn btn-primary">Add Book</button>
+        </div>
+    <button type="add" class="btn btn-primary" >Add Book</button>
     </form>
