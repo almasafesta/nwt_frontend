@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { RestApiService} from '../../shared/rest-api.service';
+import { Books } from '../shared/books';
+import { ProfileService } from '../shared/profile.service';
 
 @Component({
   selector: 'profile-grid',
   templateUrl: './profile-grid.component.html',
   styleUrls: ['./profile-grid.component.css']
 })
-export class ProfileGridComponent {
+export class ProfileGridComponent implements OnInit {
+  idUser:any;
   selectedBookId:any;
-  canceledMembership:any;
-  renewedMembership:any;
-  idPerson:any;
-  constructor(private api:RestApiService, private toastr: ToastrService) { }
-  rowData=[
-    { book:'Harry Potter', dueDate:' 01/01/2001', toPay:'5€', status:'available'}
-    ]
+  rowData:any[];
+  balance:any;
+  constructor(private service:ProfileService, private toastr: ToastrService) { 
+    this.service.getBooks(this.idUser).subscribe((data:Books[])=>{
+      this.rowData=data;
+    })
+  }
+  ngOnInit(): void {
+    
+  }  
   columnDefs = [
       
     { headerName:"Book", field:"book", flex: 1.5 },
@@ -36,19 +41,22 @@ export class ProfileGridComponent {
   }
   rowSelection = 'multiple';
   cancelMembership(){
-    this.canceledMembership=true;
-    this.api.put('/', this.canceledMembership).subscribe(() => {
-      this.toastr.success("Membership canceled");
-    });
+    this.service.cancelMembership(this.idUser).subscribe((data:any)=>{
+      this.toastr.info("Canceled membership!");
+    })
+    
 
   }  
   renewMembership(){
-    this.renewedMembership=true;
-    this.api.put('/', this.canceledMembership).subscribe(() => {
-      this.toastr.success("Membership renewed!");
-    });
+    //post
+    
   }
   checkBalance(){
-    this.api.get('/', this.idPerson)
+    this.service.checkBalance(this.idUser).subscribe((data:any)=>{
+      this.balance=data;
+      this.toastr.info("Balance is: ", this.balance);
+    })
+    
+    
   }
 }

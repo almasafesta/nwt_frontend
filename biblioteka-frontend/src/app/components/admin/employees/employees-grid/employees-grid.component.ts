@@ -4,6 +4,8 @@ import { RestApiService } from 'src/app/components/shared/rest-api.service';
 import {ToastrService} from 'ngx-toastr';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { EmployeeService } from '../shared/employee.service';
+import { Employee } from '../shared/employee';
 
 @Component({
   selector: 'employees-grid',
@@ -13,14 +15,15 @@ import { EventEmitter } from '@angular/core';
 export class EmployeesGridComponent implements OnInit {
   @Output() childToParent = new EventEmitter<String>();
   selectedId:any;
-  constructor(private api:RestApiService, private toastr: ToastrService) { }
+  rowData:any;
+  constructor(private service:EmployeeService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.service.getAllEmployees().subscribe((data:Employee[])=>{
+      this.rowData=data;
+    })
   }
-  rowData=[
-    { employee:'123456', firstName:' Almasa', lastName:'Festa'},
-    { employee:'1234566666', firstName:' Almasa', lastName:'Festa'}
-    ]
+  
 columnDefs = [
     { headerName:"Employee", field:"employee", flex: 1.5 },
     { headerName:"First Name", field:"firstName", flex: 1.5 },
@@ -50,8 +53,8 @@ columnDefs = [
     
   }
   delete(){
-    this.api.delete('/', this.selectedId).subscribe(response=>{
-      if (response && response.payload) {
+    this.service.deleteEmployee(this.selectedId).subscribe(response=>{
+      if (response) {
         this.toastr.success('deleted!');
       }
     })

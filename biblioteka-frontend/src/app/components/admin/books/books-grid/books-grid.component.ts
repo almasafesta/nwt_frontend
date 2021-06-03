@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { RestApiService } from 'src/app/components/shared/rest-api.service';
+import { Books } from '../shared/books';
+import { BooksService } from '../shared/books.service';
 
 @Component({
   selector: 'books-grid',
@@ -9,13 +11,15 @@ import { RestApiService } from 'src/app/components/shared/rest-api.service';
 })
 export class BooksGridComponent implements OnInit {
   selectedId:any;
-  constructor(private api:RestApiService, private toastr: ToastrService) { }
+  rowData:any;
+  constructor(private service:BooksService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.service.getAllBooks().subscribe((data:Books[])=>{
+      this.rowData=data;
+    })
   }
-  rowData=[
-    { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'}
-    ]
+  
 columnDefs = [
     { headerName:"Book", field:"bookId", flex: 1.5 },
     { headerName:"Title ", field:"title", flex: 1.5 },
@@ -33,8 +37,8 @@ columnDefs = [
   }
   rowSelection = 'multiple';
   delete(){
-    this.api.delete('/', this.selectedId).subscribe(response=>{
-      if (response && response.payload) {
+    this.service.deleteBook(this.selectedId).subscribe(response=>{
+      if (response) {
         this.toastr.success('deleted!');
       }
     })

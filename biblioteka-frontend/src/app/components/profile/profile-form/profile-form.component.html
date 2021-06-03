@@ -1,4 +1,4 @@
-<form class="forma-biblioteka" lass="form-control" name="add-employee" (ngSubmit)="edit()">
+<form class="forma-biblioteka" class="form-control" name="add-employee" (ngSubmit)="edit()">
     <div class="row">
         <div class="col">
           <label >First name</label>
@@ -10,10 +10,10 @@
     </div>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="First name" name="firstName" [(ngModel)]="firstName">
+            <input type="text" class="form-control" value="{{profile.firstName}}" name="firstName" [(ngModel)]="firstName">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Last name" name="lastName" [(ngModel)]="lastName">
+            <input type="text" class="form-control" value="{{profile.lastName}}" name="lastName" [(ngModel)]="lastName">
         </div>
         <label > </label>
     </div>
@@ -31,7 +31,7 @@
             <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password">
         </div>
         <div class="col">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Confirm password" name="confirmPassword" [(ngModel)]="confirmPassword">
         </div>
         <label > </label>
     </div>
@@ -47,10 +47,10 @@
     </div>
     <div class="row">
         <div class="col" >
-            <input type="email" class="form-control" placeholder="Email@email.com" name="email" [(ngModel)]="email">
+            <input type="email" class="form-control" value="{{profile.email}}" name="email" [(ngModel)]="email">
         </div>
         <div class="col">
-            <input type="email" class="form-control" placeholder="Email@email.com">
+            <input type="email" class="form-control" placeholder="Confirm email" name="confirmEmail" [(ngModel)]="confirmEmail">
         </div>
               
     </div><br>

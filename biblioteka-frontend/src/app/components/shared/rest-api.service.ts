@@ -3,9 +3,21 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {EmployeeModel} from './employee.model'
 
 @Injectable()
 export class RestApiService {
+
+  //constructor(private http: HttpClient) { }
+ 
+  public getEmployees(): Observable<EmployeeModel> 
+  {
+    const url = 'http://localhost:8000/employees';
+ 
+    return this.http.get<EmployeeModel>(url);
+  }
+
+  
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -4,15 +4,15 @@
 
     <div class="col-sm-3">
       <label for="firstName" class="form-label">First Name:</label>
-      <input type="text" class="form-control" id="firstName" name="firstName"  [(ngModel)]="firstName">
+      <input type="text" class="form-control" id="firstName" name="firstName"  [(ngModel)]="employee.firstName">
     </div>
     <div class="col-sm-3">
       <label for="lastName" class="form-label">Last Name:</label>
-      <input   type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName">
+      <input   type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="employee.lastName">
     </div>
     <div class="col-sm-3">
         <label for="gender" class="form-label">Gender:</label>
-        <select class="form-select" id="specificSizeSelect" name="gender" [(ngModel)]="gender">
+        <select class="form-select" id="specificSizeSelect" name="gender" [(ngModel)]="employee.gender">
           <option selected>Choose...</option>
           <option value="1">Female</option>
           <option value="2">Male</option>
@@ -20,7 +20,7 @@
       </div>
       <div class="col-sm-3">
         <label for="jobTitle" class="form-label">Job Title:</label>
-        <select class="form-select" id="specificSizeSelect" name="jobTitle" [(ngModel)]="jobTitle">
+        <select class="form-select" id="specificSizeSelect" name="jobTitle" [(ngModel)]="employee.jobTitle">
           <option selected >Choose...</option>
           <option value="1">Employee</option>
           <option value="2">Admin</option>
@@ -28,11 +28,11 @@
       </div>
       <div class="col-sm-3">
         <label for="dateOfBirth" class="form-label">Date of birth:</label>
-        <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth">
+        <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth">
       </div>
     <div class="col-sm-3">
         <label for="status" class="form-label">Status:</label>
-        <select class="form-select" id="specificSizeSelect" name="status" [(ngModel)]="status">
+        <select class="form-select" id="specificSizeSelect" name="status" [(ngModel)]="employee.status">
           <option selected>Choose...</option>
           <option value="1">Available</option>
           <option value="3">Unavailable</option>

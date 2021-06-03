@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { RestApiService } from '../../shared/rest-api.service';
+import { Profile } from '../shared/profile';
+import { ProfileService } from '../shared/profile.service';
 
 @Component({
   selector: 'profile-form',
@@ -8,26 +9,30 @@ import { RestApiService } from '../../shared/rest-api.service';
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent implements OnInit {
-  editProfile:any;
+  profile:Profile;
+  id:any;
   firstName:any;
   lastName:any;
   password:any;
+  confirmPassword:any;
   email:any;
-  constructor(private api: RestApiService, private toastr: ToastrService) { }
+  confirmEmail:any;
+  constructor(private service: ProfileService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.service.getUser(this.id).subscribe((data:Profile)=>{
+      this.profile=data;
+    })
   }
+  
   edit(){
-    this.editProfile={
-      firstName:this.firstName,
-      lastName:this.lastName,
-      password:this.password,
-      email:this.email
+    if(this.email!=this.confirmEmail || this.password!=this.confirmPassword){
+      this.toastr.error("Please enter same email/password!")
     }
-    this.api.put('/', this.editProfile ).subscribe(() => {
-      this.toastr.success("edited");
-    });
-
+    else{
+      
+    }
+    //put
   }
 
 }
