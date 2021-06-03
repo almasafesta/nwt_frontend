@@ -8,13 +8,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReviewComponent } from './components/profile/review/review.component';
+import { EmployeesComponent } from './components/admin/employees/employees.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
   {path: 'register' , component: RegisterComponent},
   {path: 'bookstore', component: BookstoreComponent},
   {path: 'profile', component:ProfileComponent},
-  {path:'admin', component:AdminComponent},
+  {path:'admin', component:EmployeesComponent},
   {path: 'add-book', component:AddBookComponent},
   {path: 'add-employee', component:AddEmployeeComponent},
   {path: 'review', component:ReviewComponent}

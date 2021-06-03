@@ -6,3 +6,4 @@ export class EmployeeCreate {
     dateOfBirth:string;
     status:string;
 }
+

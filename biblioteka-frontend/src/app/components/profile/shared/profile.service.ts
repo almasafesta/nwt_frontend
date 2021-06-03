@@ -22,8 +22,8 @@ export class ProfileService {
     this.url=this.baseUrl+id;
     return this.http.get<Books[]>('$this.url');
   }
-  editProfile(id:any){
-    this.url=this.baseUrl+id;
+  editProfile(profile:Profile, id:any){
+    this.url=this.baseUrl;
     //put
     //return this.http.put<Profile>('$this.url');
   }

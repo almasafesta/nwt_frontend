@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestApiService } from 'src/app/components/shared/rest-api.service';
 import {ToastrService} from 'ngx-toastr';
 import { EmployeeService } from '../shared/employee.service';
-import { EmployeeCreate } from 'src/app/employee-create';
+import { EmployeeCreate } from '../shared/employee-create';
 
 @Component({
   selector: 'app-add-employee',
@@ -12,7 +12,9 @@ import { EmployeeCreate } from 'src/app/employee-create';
 export class AddEmployeeComponent implements OnInit {
   employee:EmployeeCreate;
 
-  constructor(private service: EmployeeService, private toastr: ToastrService) { }
+  constructor(private service: EmployeeService, private toastr: ToastrService) {
+    this.employee=new EmployeeCreate();
+   }
 
   ngOnInit(): void {
   }

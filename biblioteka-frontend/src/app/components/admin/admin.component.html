@@ -1,12 +1,12 @@
 <ul class="nav nav-tabs">
     <li class="nav-item"   routerLinkActive="active">
-      <a class="nav-link " aria-current="page" href="#"  [routerLink] = "'/employees'" >Employees</a>
+      <a class="nav-link " [ngClass]=" {'active' : path=='employees' || path=='admin'} " aria-current="page" href="#"  [routerLink] = "'/employees'" >Employees</a>
     </li>
     <li class="nav-item" >
-      <a class="nav-link" href="#" [routerLink] = "'/books'">Books</a>
+      <a class="nav-link" href="#" [routerLink] = "'/books'" [ngClass]=" {'active' : path=='books'} ">Books</a>
     </li>
     <li class="nav-item" >
-      <a class="nav-link" href="#" [routerLink] = "'/approvals'">Approval</a>
+      <a class="nav-link" href="#" [routerLink] = "'/approvals'" [ngClass]=" {'active' : path=='approvals'} ">Approval</a>
     </li>
     
   </ul>

@@ -6,6 +6,7 @@ import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { EmployeeService } from '../shared/employee.service';
 import { Employee } from '../shared/employee';
+import { GridOptions, GridOptionsWrapper } from 'ag-grid-community';
 
 @Component({
   selector: 'employees-grid',
@@ -20,8 +21,14 @@ export class EmployeesGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getAllEmployees().subscribe((data:Employee[])=>{
-      this.rowData=data;
+      //this.rowData=data;
     })
+    this.rowData=[
+      { employee:'123456', firstName:' Almasa', lastName:'Festa'},
+      { employee:'123456', firstName:' Almasa', lastName:'Festa'},
+      { employee:'1234566666', firstName:' Almasa', lastName:'Festa'}
+      ]
+    
   }
   
 columnDefs = [
@@ -29,17 +36,15 @@ columnDefs = [
     { headerName:"First Name", field:"firstName", flex: 1.5 },
     { headerName:"Last Name", field:"lastName", flex: 1.5 }
   ]
-  rowSelection = 'multiple';
+  rowSelection = 'single';
   defaultColDef = { 
     resizable: true,
-    cellStyle: {color: '#1a3469'},
-    checkboxSelection: true,
+    cellStyle: {color: '#1a3469'}
  }
   onRowClicked(event: any) {
-    event.node.gridOptionsWrapper.highlighted="true";
+    
     console.log(event); 
     this.selectedId=event.data.employee;
-    console.log('row', this.selectedId); 
   }
   edit(){
     this.childToParent.emit(this.selectedId);
