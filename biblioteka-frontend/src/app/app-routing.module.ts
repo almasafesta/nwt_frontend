@@ -9,6 +9,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReviewComponent } from './components/profile/review/review.component';
 import { EmployeesComponent } from './components/admin/employees/employees.component';
+import { EditEmployeeComponent } from './components/admin/employees/edit-employee/edit-employee.component';
+import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
 
 const routes: Routes = [
   {path: 'login' , component: LoginComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'profile', component:ProfileComponent},
   {path:'admin', component:EmployeesComponent},
   {path: 'add-book', component:AddBookComponent},
+  {path: 'edit-book', component:EditBookComponent},
   {path: 'add-employee', component:AddEmployeeComponent},
+  {path: 'edit-employee', component:EditEmployeeComponent},
   {path: 'review', component:ReviewComponent}
 ];
 

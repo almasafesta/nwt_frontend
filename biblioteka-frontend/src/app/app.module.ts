@@ -29,6 +29,8 @@ import {RestApiService} from './components/shared/rest-api.service';
 import {ReviewComponent} from './components/profile/review/review.component'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditEmployeeComponent } from './components/admin/employees/edit-employee/edit-employee.component';
+import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ApprovalsGridComponent,
     AddBookComponent,
     AddEmployeeComponent,
-    ReviewComponent
+    ReviewComponent,
+    EditEmployeeComponent,
+    EditBookComponent
   ],
   imports: [  
     FormsModule,
