@@ -1,15 +1,13 @@
-<div >
-  <ag-grid-angular style="width: 75%; height: 500px; padding-left: 10px;"
-  class="ag-theme-alpine ag-selectable ag-row-hover"
+<div>
+  <ag-grid-angular 
+  style="width: 99%; height: 500px; padding-left: 10px;"
+  class="ag-theme-balham"
     [columnDefs]="columnDefs"
     [rowSelection]="rowSelection"
-    [enableCellTextSelection]="true"
     [defaultColDef]="defaultColDef"
     [rowData]="rowData"
     (rowClicked)='onRowClicked($event)'
-    enableRangeSelection="true"
-    [animateRows]="true"
-    [suppressRowClickSelection]="false">
+    >
   </ag-grid-angular>
 </div>
 

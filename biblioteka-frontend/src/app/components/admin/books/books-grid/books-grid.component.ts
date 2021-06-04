@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { RestApiService } from 'src/app/components/shared/rest-api.service';
 import { Books } from '../shared/books';
@@ -10,14 +10,22 @@ import { BooksService } from '../shared/books.service';
   styleUrls: ['./books-grid.component.css']
 })
 export class BooksGridComponent implements OnInit {
+  @Output() childToParent = new EventEmitter<String>();
   selectedId:any;
   rowData:any;
   constructor(private service:BooksService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe((data:Books[])=>{
-      this.rowData=data;
+      //this.rowData=data;
     })
+
+    this.rowData=[
+      { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'},
+      { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'},
+      { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'}
+      ]
+
   }
   
 columnDefs = [
@@ -29,13 +37,13 @@ columnDefs = [
     resizable: true,
     cellStyle: {color: '#1a3469'}
  }
+
   onRowClicked(event: any) {
-    event.node.gridOptionsWrapper.highlighted="true";
     console.log(event); 
-    this.selectedId=event.data.bookId;
-    console.log('row', this.selectedId); 
+    this.selectedId=event.data.book;
   }
-  rowSelection = 'multiple';
+
+  rowSelection = 'single';
   delete(){
     this.service.deleteBook(this.selectedId).subscribe(response=>{
       if (response) {
