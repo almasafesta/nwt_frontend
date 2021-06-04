@@ -11,8 +11,10 @@ import { ReviewComponent } from './components/profile/review/review.component';
 import { EmployeesComponent } from './components/admin/employees/employees.component';
 import { EditEmployeeComponent } from './components/admin/employees/edit-employee/edit-employee.component';
 import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
+  {path:'', component:HomeComponent},
   {path: 'login' , component: LoginComponent},
   {path: 'register' , component: RegisterComponent},
   {path: 'bookstore', component: BookstoreComponent},
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path: 'edit-book', component:EditBookComponent},
   {path: 'add-employee', component:AddEmployeeComponent},
   {path: 'edit-employee', component:EditEmployeeComponent},
-  {path: 'review', component:ReviewComponent}
+  {path: 'review', component:ReviewComponent},
+  {path: 'home', component: HomeComponent}
 ];
 
 

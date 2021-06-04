@@ -31,6 +31,7 @@ import {ReviewComponent} from './components/profile/review/review.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './components/admin/employees/edit-employee/edit-employee.component';
 import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { EditBookComponent } from './components/admin/books/edit-book/edit-book.
     AddEmployeeComponent,
     ReviewComponent,
     EditEmployeeComponent,
-    EditBookComponent
+    EditBookComponent,
+    HomeComponent
   ],
   imports: [  
     FormsModule,
