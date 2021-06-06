@@ -18,10 +18,10 @@ export class ProfileService {
     this.url=this.baseUrl+id;
     return this.http.get<Profile>('${this.url}');
   }
-  getBooks(id:any):Observable<Books[]>{
-    this.url=this.baseUrl+id;
-    return this.http.get<Books[]>('$this.url');
-  }
+  //getBooks(id:any):Observable<Books[]>{
+    //this.url=this.baseUrl+id;
+    //return this.http.get<Books[]>('$this.url');
+  //}
   editProfile(profile:Profile, id:any){
     this.url=this.baseUrl;
     //put

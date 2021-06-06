@@ -11,7 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { BookstoreComponent} from './components/bookstore/bookstore.component';
 import { BookstoreFormComponent} from './components/bookstore/bookstore-form/bookstore-form.component';
 import { BookstoreGridComponent} from './components/bookstore/bookstore-grid/bookstore-grid.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProfileComponent} from './components/profile/profile.component';
 import {ProfileFormComponent} from './components/profile/profile-form/profile-form.component';
 import {ProfileGridComponent} from './components/profile/profile-grid/profile-grid.component';
@@ -32,6 +32,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './components/admin/employees/edit-employee/edit-employee.component';
 import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
 import { HomeComponent } from './components/home/home.component';
+import { BooksService } from './components/bookstore/shared/books.service';
+import { ApprovalService } from './components/admin/approvals/shared/approval.service';
+import { BooksAdminService } from './components/admin/books/shared/books.admin.service';
+import { EmployeeService } from './components/admin/employees/shared/employee.service';
+import { ProfileService } from './components/profile/shared/profile.service';
+import {AuthService} from './components/shared/authentication.service'
+
 
 @NgModule({
   declarations: [
@@ -70,7 +77,14 @@ import { HomeComponent } from './components/home/home.component';
     TabRoutingModule,
     AgGridModule.withComponents([])
   ],
-  providers: [RestApiService],
+  providers: [
+    BooksService,
+    ApprovalService,
+    BooksAdminService,
+    EmployeeService,
+    ProfileService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { RestApiService } from 'src/app/components/shared/rest-api.service';
 import { Books } from '../shared/books';
-import { BooksService } from '../shared/books.service';
+import { BooksAdminService } from '../shared/books.admin.service';
 
 @Component({
   selector: 'books-grid',
@@ -13,7 +13,7 @@ export class BooksGridComponent implements OnInit {
   @Output() childToParent = new EventEmitter<String>();
   selectedId:any;
   rowData:any;
-  constructor(private service:BooksService, private toastr: ToastrService) { }
+  constructor(private service:BooksAdminService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe((data:Books[])=>{
@@ -45,7 +45,7 @@ columnDefs = [
 
   rowSelection = 'single';
   delete(){
-    this.service.deleteBook(this.selectedId).subscribe(response=>{
+    this.service.deleteBook(this.selectedId).subscribe((response: any)=>{
       if (response) {
         this.toastr.success('deleted!');
       }

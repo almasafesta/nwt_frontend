@@ -6,7 +6,7 @@ import { Books } from './books';
 @Injectable({
   providedIn: 'root'
 })
-export class BooksService {
+export class BooksAdminService {
   private baseUrl='http://localhost:8000/'
   private url='';
   constructor(private http:HttpClient) { }

@@ -13,10 +13,11 @@ export class ProfileGridComponent implements OnInit {
   selectedBookId:any;
   rowData:any[];
   balance:any;
+  selectedId:any;
   constructor(private service:ProfileService, private toastr: ToastrService) { 
-    this.service.getBooks(this.idUser).subscribe((data:Books[])=>{
+    /*this.service.getBooks(this.idUser).subscribe((data:Books[])=>{
       this.rowData=data;
-    })
+    })*/
   }
   ngOnInit(): void {
     
@@ -29,17 +30,16 @@ export class ProfileGridComponent implements OnInit {
     { headerName:"Status", field:"status", flex: 1 },
     { headerName:"Review", field:"review", flex:1}
   ]
+  rowSelection = 'single';
   defaultColDef = { 
     resizable: true,
     cellStyle: {color: '#1a3469'}
  }
   onRowClicked(event: any) {
-    event.node.gridOptionsWrapper.highlighted="true";
+    
     console.log(event); 
-    this.selectedBookId=event.data.bookId;
-    console.log('row', this.selectedBookId); 
+    this.selectedId=event.data.employee;
   }
-  rowSelection = 'multiple';
   cancelMembership(){
     this.service.cancelMembership(this.idUser).subscribe((data:any)=>{
       this.toastr.info("Canceled membership!");
