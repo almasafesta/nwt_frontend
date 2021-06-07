@@ -11,17 +11,23 @@ import { Profile } from './profile';
 })
 export class ProfileService {
 
-  private baseUrl='http://localhost:8000/'
+  private baseUrl='http://localhost:8555/edit-knjiga'
   private url='';
   constructor(private http:HttpClient) { }
-  getUser(id:any):Observable<Profile>{ 
-    this.url=this.baseUrl+id;
-    return this.http.get<Profile>('${this.url}');
-  }
-  //getBooks(id:any):Observable<Books[]>{
+  //getUser(id:any):Observable<Profile>{ 
     //this.url=this.baseUrl+id;
-    //return this.http.get<Books[]>('$this.url');
+    //return this.http.get<Profile>('${this.url}');
   //}
+  getBooks():Observable<any>{ 
+    this.url=this.baseUrl;     
+    
+    return this.http.get<ArrayBuffer>(this.baseUrl, { 'headers': {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin': '*',
+      'Accept': '*'
+
+    }} );
+  }
   editProfile(profile:Profile, id:any){
     this.url=this.baseUrl;
     //put

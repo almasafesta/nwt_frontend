@@ -8,12 +8,15 @@ import { Employee } from './employee';
 })
 export class EmployeeService {
 
-  private baseUrl='http://localhost:8000/'
+  private baseUrl='http://localhost:8686/zaposlenici'
   private url='';
   constructor(private http:HttpClient) { }
-
-  getAllEmployees():Observable<Employee[]>{ 
-    return this.http.get<Employee[]>('${this.baseUrl}');
+  
+  getAllEmployees():Observable<any>{ 
+    return this.http.get<ArrayBuffer>(this.baseUrl, { 'headers': {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin': '*',
+      'Accept': '*'}});
   }
   deleteEmployee(id:any){
     this.url=this.baseUrl+id;

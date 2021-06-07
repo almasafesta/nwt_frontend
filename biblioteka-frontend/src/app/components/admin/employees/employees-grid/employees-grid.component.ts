@@ -20,21 +20,17 @@ export class EmployeesGridComponent implements OnInit {
   constructor(private service:EmployeeService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.service.getAllEmployees().subscribe((data:Employee[])=>{
-      //this.rowData=data;
-    })
-    this.rowData=[
-      { employee:'123456', firstName:' Almasa', lastName:'Festa'},
-      { employee:'123456', firstName:' Almasa', lastName:'Festa'},
-      { employee:'1234566666', firstName:' Almasa', lastName:'Festa'}
-      ]
+    this.service.getAllEmployees().subscribe((data:any)=>{
+      this.rowData=data;
+      console.log(data);
+    })  
     
   }
   
 columnDefs = [
-    { headerName:"Employee", field:"employee", flex: 1.5 },
-    { headerName:"First Name", field:"firstName", flex: 1.5 },
-    { headerName:"Last Name", field:"lastName", flex: 1.5 }
+    { headerName:"Employee", field:"id", flex: 1.5 },
+    { headerName:"Name", field:"name", flex: 1.5 },
+    { headerName:"Date of Employment Start", field:"dateOfEmployment", flex: 1.5 }
   ]
   rowSelection = 'single';
   defaultColDef = { 

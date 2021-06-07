@@ -15,19 +15,20 @@ export class ProfileGridComponent implements OnInit {
   balance:any;
   selectedId:any;
   constructor(private service:ProfileService, private toastr: ToastrService) { 
-    /*this.service.getBooks(this.idUser).subscribe((data:Books[])=>{
+    //IdUser
+    this.service.getBooks().subscribe((data:Books[])=>{
+      console.log(data);
       this.rowData=data;
-    })*/
+    })
   }
   ngOnInit(): void {
     
   }  
   columnDefs = [
       
-    { headerName:"Book", field:"book", flex: 1.5 },
+    { headerName:"Book", field:"naziv", flex: 1.5 },
     { headerName:"Due date", field:"dueDate", flex: 1.5 },
     { headerName:"To pay", field:"toPay", flex: 1.5 },
-    { headerName:"Status", field:"status", flex: 1 },
     { headerName:"Review", field:"review", flex:1}
   ]
   rowSelection = 'single';

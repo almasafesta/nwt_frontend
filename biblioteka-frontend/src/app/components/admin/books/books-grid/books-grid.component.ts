@@ -17,21 +17,16 @@ export class BooksGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe((data:Books[])=>{
-      //this.rowData=data;
+      console.log(data)
+      this.rowData=data;
     })
-
-    this.rowData=[
-      { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'},
-      { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'},
-      { bookId:'123456', title:' Harry Potter', author:'J.K.Rowling'}
-      ]
-
   }
+    
   
 columnDefs = [
-    { headerName:"Book", field:"bookId", flex: 1.5 },
-    { headerName:"Title ", field:"title", flex: 1.5 },
-    { headerName:"Author", field:"author", flex: 1.5 }
+    { headerName:"Book", field:"id", flex: 1.5 },
+    { headerName:"Title ", field:"naziv", flex: 1.5 },
+    { headerName:"Author", field:"autor", flex: 1.5 }
   ]
   defaultColDef = { 
     resizable: true,

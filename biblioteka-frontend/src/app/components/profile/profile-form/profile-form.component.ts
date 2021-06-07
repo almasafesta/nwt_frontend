@@ -19,10 +19,10 @@ export class ProfileFormComponent implements OnInit {
   confirmEmail:any;
   constructor(private service: ProfileService, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {/*
     this.service.getUser(this.id).subscribe((data:Profile)=>{
       this.profile=data;
-    })
+    })*/
   }
   
   edit(){

@@ -15,22 +15,23 @@ export class BookstoreGridComponent implements OnInit {
   gender:any;
   rowData:any;
   selectedId:number;
+  dataRows:any[];
   constructor(private service:BooksService) { }
 
   ngOnInit(): void {
     console.log(this.service.getBooks());
     this.service.getBooks().subscribe((data: any)=>{
       console.log('data',data);
-      this.rowData=data;
+      this.rowData=data;      
       //all books
     }
     )
   }
   
 columnDefs = [
-    { headerName:"Title", field:"title", flex: 1.5 },
-    { headerName:"Author", field:"author", flex: 1.5 },
-    { headerName:"Gender", field:"gender", flex: 1.5 },
+    { headerName:"Title", field:"naziv", flex: 1.5 },
+    { headerName:"Author", field:"autor", flex: 1.5 },
+    { headerName:"Gender", field:"zanr", flex: 1.5 },
     { headerName:"Status", field:"status", flex: 1 },
   ]
   rowSelection = 'single';
@@ -45,6 +46,7 @@ columnDefs = [
   }
   search(){
     this.service.getBooks().subscribe((data:any)=>{
+      console.log(data);
       this.rowData=data;
     })
   }
