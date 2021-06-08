@@ -12,9 +12,10 @@ import { EmployeesComponent } from './components/admin/employees/employees.compo
 import { EditEmployeeComponent } from './components/admin/employees/edit-employee/edit-employee.component';
 import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './components/shared/auth.guard';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
+  {path:'', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'login' , component: LoginComponent},
   {path: 'register' , component: RegisterComponent},
   {path: 'bookstore', component: BookstoreComponent},

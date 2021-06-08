@@ -9,15 +9,50 @@ import { User } from './user.model';
 
 @Injectable()
 export class AuthService {
-    currentUser: User;
+    
+    private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+    //userType: BehaviorSubject<string> = new BehaviorSubject<string>(this.getUserType());
+
+    get isLoggedIn() {
+      return this.loggedIn.asObservable(); // {2}
+    }
+    
+    /*getUserType(): string {
+        const user=localStorage.getItem('user')
+        return user!== null ? JSON.parse(user) : new User();
+    }*/
+    constructor(
+      private router: Router
+    ) {}
+  
+    login(user: User){
+      if (user.username !== '' && user.password !== '' ) { // {3}
+        
+        if(user.username==='admin'){
+            localStorage.setItem("admin", user.username);
+        }
+        else{
+            localStorage.setItem("user", user.username);
+        }
+        this.loggedIn.next(true);
+        //this.userType.next(user.username);
+        this.router.navigate(['/']);
+      }
+    }
+  
+    logout() {                            // {4}
+      this.loggedIn.next(false);
+      this.router.navigate(['/login']);
+    }
+
+
+    /*
+    currentUser: User | null;
 
     constructor(private toastr: ToastrService, private http:HttpClient, private router:Router) { }
     private baseUrlLogin: string="";
     private baseUrlRegister : string = "";
 
-    private loginStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
-    private UserName    = new BehaviorSubject<string>(localStorage.getItem('username')|| '{}');
-    private UserRole    = new BehaviorSubject<string>(localStorage.getItem('userRole')|| '{}');
 
     isLoggedIn(): boolean {
         return !!this.currentUser;
@@ -58,62 +93,10 @@ export class AuthService {
             };
 
         }
-        this.toastr.info(`User: ${this.currentUser.username} logged in`);/*
-
-        return this.http.post<any>(this.baseUrlLogin, {userName, password}).pipe(
-
-
-            map(result => {
-
-                // login successful if there's a jwt token in the response
-                if(result && result.token) 
-                {
-                      // store user details and jwt token in local storage to keep user logged in between page refreshes
-
-                    this.loginStatus.next(true);
-                    localStorage.setItem('loginStatus', '1');
-                    localStorage.setItem('jwt', result.token);
-                    localStorage.setItem('username', result.username);
-                    localStorage.setItem('expiration', result.expiration);
-                    localStorage.setItem('userRole', result.userRole);
-                    this.UserName.next(localStorage.getItem('userName')|| '{}');
-                    this.UserRole.next(localStorage.getItem('userRole')|| '{}');
-
-
-                }
-
-                 return result;
-
-            })
-              
-            );*/
-
-
+        this.toastr.info(`User: ${this.currentUser.username} logged in`);
     }
 
     logout(): void {
-         // Set Loginstatus to false and delete saved jwt cookie
-         this.loginStatus.next(false);
-         localStorage.removeItem('jwt');
-         localStorage.removeItem('userRole');
-         localStorage.removeItem('username');
-         localStorage.removeItem('expiration');
-         localStorage.setItem('loginStatus', '0');
-         this.router.navigate(['/login']);
-         console.log("Logged Out Successfully");
-    }
-    get isLoggesIn() 
-    {
-        return this.loginStatus.asObservable();
-    }
-
-    get currentUserName() 
-    {
-        return this.UserName.asObservable();
-    }
-
-   get currentUserRole() 
-    {
-        return this.UserRole.asObservable();
-    }
+        this.currentUser = null;
+    }*/
 }

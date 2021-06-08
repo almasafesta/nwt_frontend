@@ -38,6 +38,8 @@ import { BooksAdminService } from './components/admin/books/shared/books.admin.s
 import { EmployeeService } from './components/admin/employees/shared/employee.service';
 import { ProfileService } from './components/profile/shared/profile.service';
 import {AuthService} from './components/shared/authentication.service'
+import { LoginService } from './components/login/shared/login.service';
+import { AuthGuard } from './components/shared/auth.guard';
 
 
 @NgModule({
@@ -83,7 +85,9 @@ import {AuthService} from './components/shared/authentication.service'
     BooksAdminService,
     EmployeeService,
     ProfileService,
-    AuthService
+    AuthService,
+    LoginService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

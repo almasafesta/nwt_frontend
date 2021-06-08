@@ -43,15 +43,7 @@ columnDefs = [
     this.selectedId=event.data.employee;
   }
   edit(){
-    this.childToParent.emit(this.selectedId);
-    /*
-    this.api.post('/', this.selectedId).subscribe(response => {
-      this.childToParent.emit(this.selectedId);
-      if (response && response.payload) {
-        this.toastr.success('edited'); //doraditi
-      }
-    });*/
-    
+    this.childToParent.emit(this.selectedId);   
   }
   delete(){
     this.service.deleteEmployee(this.selectedId).subscribe(response=>{

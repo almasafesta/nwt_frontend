@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from '../shared/authentication.service';
@@ -10,23 +10,20 @@ import { User } from '../shared/user.model';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  user:User;
-  isUserLoggedIn:boolean;
+  isLoggedIn$: Observable<boolean>;                  // {1}
+  userType: string = '';
 
-  constructor(private authService:AuthService, private toastr: ToastrService) { }
-  LoginStatus$ : Observable<boolean>;
+  constructor(private authService: AuthService) { }
 
-    UserName$ : Observable<string>;
-    ngOnInit(): void {
-      this.LoginStatus$ = this.authService.isLoggesIn;
-      this.UserName$ = this.authService.currentUserName;
-
-
-
-      this.user= this.authService.currentUser;   
-      console.log('user',this.user)
-      this.isUserLoggedIn=this.authService.isLoggedIn();   
-      console.log('is', this.isUserLoggedIn);
+  ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn; // {2}
+    //this.authService.userType.subscribe(value => this.userType = value);
+    console.log('type',this.userType);
   }
+
+  onLogout(){
+    this.authService.logout();                      // {3}
+  }
+  
 
 }
